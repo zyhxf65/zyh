@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .login-container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-actions button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .form-actions button[type="reset"] {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>用户登录</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="workshop">车间：</label>
+                <select id="workshop" name="workshop">
+                    <option value="武功供电车间">武功供电车间</option>
+                    <option value="秦岭供电车间">秦岭供电车间</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team">班组：</label>
+                <select id="team" name="team">
+                    <option value="咸阳西接触网工区">咸阳西接触网工区</option>
+                    <option value="秦岭接触网工区">秦岭接触网工区</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">确定</button>
+                <button type="reset">重置</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const workshop = document.getElementById('workshop').value;
+            const team = document.getElementById('team').value;
+            const password = document.getElementById('password').value;
+
+            // 简单的密码验证
+            if (password === '123456') {
+                window.location.href = `construction.html?workshop=${encodeURIComponent(workshop)}&team=${encodeURIComponent(team)}`;
+            } else {
+                alert('密码错误，请重试！');
+            }
+        });
+    </script>
+</body>
+</html>
